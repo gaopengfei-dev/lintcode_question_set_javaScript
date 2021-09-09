@@ -1,0 +1,32 @@
+{
+  "name": "personal_blog",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "vuepress dev docs",
+    "build": "vuepress build docs",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@mr-hope/vuepress-plugin-copy-code": "^1.8.1",
+    "less-loader": "^4.1.0",
+    "sass-loader": "^12.1.0"
+  },
+  "dependencies": {
+    "@jiaminghi/data-view": "^2.10.0",
+    "async-validator": "^1.11.5",
+    "core-js": "^3.8.2",
+    "exspsheet": "^1.0.2",
+    "markdown-it-container": "^3.0.0",
+    "throttle-debounce": "1.1.0",
+    "vue-run-sfc": "^1.6.0",
+    "vue-seamless-scroll": "^1.1.23",
+    "vuepress-plugin-code-copy": "^1.0.6",
+    "vuepress-plugin-run": "^1.0.2",
+    "wangeditor": "^4.7.5"
+  }
+}
