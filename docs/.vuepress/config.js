@@ -1,13 +1,13 @@
 /*
  * @Author: jiangze
  * @Date: 2021-05-13 10:28:29
- * @LastEditTime: 2021-09-10 11:09:43
+ * @LastEditTime: 2021-09-10 11:28:19
  * @LastEditors: Please set LastEditors
  * @Description: 配置文件
  * @FilePath: \quickly_build_platform\docs\.vuepress\config.js
  */
 module.exports = {
-  base: '/dist/', // 部署地址，需要根据具体nginx代理名称设置有关
+  base: '/', // 部署地址，需要根据具体nginx代理名称设置有关
   // dest:'/dist/',
   title: 'lintCode_question_set',
   description: '技术平台',
