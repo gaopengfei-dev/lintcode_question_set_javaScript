@@ -2,14 +2,12 @@
  * @Description:
  * @Author: 郜鹏飞
  * @Date: 2021-09-09 16:41:46
- * @LastEditTime: 2021-09-10 16:49:37
+ * @LastEditTime: 2021-09-26 17:30:21
 -->
 
 # 新手必刷 50 题
 
-## 第一阶段
-
-### 1、反转一个三位整数
+## 1、反转一个三位整数
 
 ::: tip 描述
 反转一个只有 3 位数的整数。你可以假设输入一定是一个只有三位数的整数，这个整数大于等于 100，小于 1000。
@@ -68,7 +66,7 @@ export class Solution {
 }
 ```
 
-### 2、a + b 问题
+## 2、a + b 问题
 
 ::: tip 描述
 使用位运算符的情况下
@@ -89,6 +87,8 @@ export class Solution {
     输出：
     0
 
+#### 题解
+
 ```js
 export class Solution {
   /**
@@ -108,7 +108,7 @@ export class Solution {
 }
 ```
 
-### 3、巴什博弈
+## 3、巴什博弈
 
 ::: tip 描述
 你正在和朋友玩一个游戏：桌子上有一堆石头，每一次你们都会从中拿出 1 到 3 个石头。拿走最后一个石头的人赢得游戏。游戏开始时，你是先手。
@@ -128,6 +128,8 @@ export class Solution {
     输出：True
     解析：先手拿1个，必胜
 
+#### 题解
+
 ```js
 export class Solution {
   /**
@@ -144,6 +146,110 @@ export class Solution {
   canWinBash(n) {
     // Write your code here
     return n % 4 !== 0;
+  }
+}
+```
+
+## 4、计算圆的周长和面积
+
+::: tip 描述
+
+给定一个整数 r 代表一个圆的半径。
+
+你的任务是返回一个数组。
+
+其中数组的第一个元素代表圆的周长，数组的第二个元素代表圆的面积。
+:::
+
+#### 样例
+
+    输入 : r = 2
+    输出 : [12.56, 12.56]
+
+#### 题解
+
+```js
+class Solution {
+  calculate(r) {
+    return [2 * Math.PI * r, Math.PI * r ** 2].map((v) => +v.toFixed(2));
+  }
+}
+```
+
+## 5、简易计算器
+
+#### 描述
+
+给出两个整数 a , b ,以及一个操作符 opeator
+
+    +, -, *, /
+
+返回结果 a operator b
+
+#### 样例
+
+    // 输入
+    a = 1
+    b = 2
+    operator = +
+    // 输出
+    3
+
+解释：
+
+返回 1 + 2 的结果
+
+#### 题解
+
+```js
+export class Calculator {
+  /**
+   * calculate
+   *
+   * @param a: An integer
+   * @param operator: A character, +, -, *, /.
+   * @param b: An integer
+   * @return: The result
+   */
+  calculate(a, operator, b) {
+    // write your code here
+    switch (operator) {
+      case '+':
+        return a + b;
+      case '-':
+        return a - b;
+      case '*':
+        return a * b;
+      case '/':
+        return a / b;
+      default:
+        return '运算符错误';
+    }
+  }
+}
+```
+
+### 6、求三个数中的最大值
+
+::: tip 说明
+方法太多，不过多编写
+:::
+
+#### 题解
+
+```js
+export class Solution {
+  /**
+   * maxOfThreeNumbers
+   *
+   * @param num1: An integer
+   * @param num2: An integer
+   * @param num3: An integer
+   * @return: an interger
+   */
+  maxOfThreeNumbers(num1, num2, num3) {
+    // write your code here
+    return Math.max(num1, num2, num3);
   }
 }
 ```

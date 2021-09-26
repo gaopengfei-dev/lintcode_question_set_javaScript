@@ -3,7 +3,7 @@
  * @Author: 武明琴
  * @Date: 2021-01-14 16:40:51
  * @EditAuthor: jiangze
- * @LastEditTime: 2021-09-09 16:44:19
+ * @LastEditTime: 2021-09-26 17:20:02
  */
 module.exports = [
   {
@@ -19,8 +19,8 @@ module.exports = [
   },
   {
     title: '新手50题',
-    collapsable: false,
-    sidebarDepth: 1,
+    collapsable: true,
+    sidebarDepth: 3,
     children: [
       {
         title: '第一阶段',
