@@ -44,7 +44,7 @@ section {
   width: 2.4rem;
   margin-right: 6px;
   height: 2.4rem;
-  background: url('../img/logo1.png') no-repeat;
+  /* background: url('../img/logo1.png') no-repeat; */
   background-size: 100% 100%;
   /* background-color: #3086b8; */
   vertical-align: middle;

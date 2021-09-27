@@ -2,7 +2,7 @@
  * @Description:
  * @Author: 郜鹏飞
  * @Date: 2021-09-09 16:41:46
- * @LastEditTime: 2021-09-26 17:30:21
+ * @LastEditTime: 2021-09-27 17:17:53
 -->
 
 # 新手必刷 50 题
@@ -172,84 +172,6 @@ export class Solution {
 class Solution {
   calculate(r) {
     return [2 * Math.PI * r, Math.PI * r ** 2].map((v) => +v.toFixed(2));
-  }
-}
-```
-
-## 5、简易计算器
-
-#### 描述
-
-给出两个整数 a , b ,以及一个操作符 opeator
-
-    +, -, *, /
-
-返回结果 a operator b
-
-#### 样例
-
-    // 输入
-    a = 1
-    b = 2
-    operator = +
-    // 输出
-    3
-
-解释：
-
-返回 1 + 2 的结果
-
-#### 题解
-
-```js
-export class Calculator {
-  /**
-   * calculate
-   *
-   * @param a: An integer
-   * @param operator: A character, +, -, *, /.
-   * @param b: An integer
-   * @return: The result
-   */
-  calculate(a, operator, b) {
-    // write your code here
-    switch (operator) {
-      case '+':
-        return a + b;
-      case '-':
-        return a - b;
-      case '*':
-        return a * b;
-      case '/':
-        return a / b;
-      default:
-        return '运算符错误';
-    }
-  }
-}
-```
-
-### 6、求三个数中的最大值
-
-::: tip 说明
-方法太多，不过多编写
-:::
-
-#### 题解
-
-```js
-export class Solution {
-  /**
-   * maxOfThreeNumbers
-   *
-   * @param num1: An integer
-   * @param num2: An integer
-   * @param num3: An integer
-   * @return: an interger
-   */
-  maxOfThreeNumbers(num1, num2, num3) {
-    // write your code here
-    return Math.max(num1, num2, num3);
   }
 }
 ```
