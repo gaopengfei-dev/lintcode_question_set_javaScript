@@ -2,7 +2,7 @@
  * @Description:
  * @Author: 郜鹏飞
  * @Date: 2021-09-27 17:18:10
- * @LastEditTime: 2021-09-27 17:18:11
+ * @LastEditTime: 2021-09-28 16:52:12
 -->
 
 ## 11、 生成给定大小的数组
@@ -245,6 +245,261 @@ export class Solution {
       arr[i] = str.join(''); // 转化成字符串赋值给arr
     }
     return arr;
+  }
+}
+```
+
+## 16、寻找素数
+
+#### 描述
+
+输出 n 以内所有的素数。（保证 n 是 100 以内的整数。）
+
+#### 样例
+
+    输入：5
+    输出：[2, 3, 5]
+
+#### 题解
+
+```js
+export class Solution {
+  /**
+   * prime
+   *
+   * @param n: an integer
+   * @return: return all prime numbers within n.
+   */
+  prime(n) {
+    // Write your code here
+    let arr = []; // 先定一个空数组
+    for (let i = 2; i <= n; i++) {
+      let a = 0; // 定义个判别条件
+      for (let k = 2; k < i; k++) {
+        if (i % k === 0) {
+          // 判断是否可被整除
+          a++; // 更改条件
+          break; // 结束本层循环，提高性能
+        }
+      }
+      if (a === 0) {
+        arr.push(i); // 判别条件不变时插入i
+      }
+    }
+    return arr;
+  }
+}
+```
+
+## 17、寻找最大值
+
+#### 描述
+
+寻找 n 个数中的最大值。（保证列表里的所有数字都在 int 范围内。）
+
+#### 样例
+
+    输入：[1, 2, 3, 4, 5]
+    输出：5
+
+:::tip
+之前已有类似题目，不编写过多方法
+:::
+
+#### 题解
+
+```js
+export class Solution {
+  maxNum(nums) {
+    // write your code here
+    return Math.max(...nums);
+  }
+}
+```
+
+## 18、旋转数组
+
+#### 描述
+
+给定一个数组，将数组向右移动 k 步，其中 k 为非负数。
+
+#### 样例
+
+    输入: [1,2,3,4,5,6,7], k = 3
+    输出: [5,6,7,1,2,3,4]
+    解释:
+    向右旋转 1 步: [7,1,2,3,4,5,6]
+    向右旋转 2 步: [6,7,1,2,3,4,5]
+    向右旋转 3 步: [5,6,7,1,2,3,4]
+
+#### 题解
+
+```js
+export class Solution {
+  rotate(nums, k) {
+    // Write your code here
+    // 第一种
+    return nums.splice(nums.length - k).concat(nums);
+    // 第二种
+    // for (let i = 0; i < k; i++) {
+    //   nums.unshift(nums.pop());
+    // }
+    // return nums;
+  }
+}
+```
+
+## 19、回文数
+
+#### 描述
+
+判断一个非负整数 n 的二进制表示是否为回文数（我们保证 0 <= n <= 2^32 - 1）
+
+#### 样例
+
+    输入: n = 3
+    输出: True
+    解释:
+    3 的二进制表示为：11。
+
+    输入: n = 4
+    输出: False
+    解释:
+    4 的二进制表示为：100。
+
+#### 题解
+
+```js
+export class Solution {
+  isPalindrome(n) {
+    // Write your code here
+    return (
+      n.toString(2) ===
+      n
+        .toString(2) // 获取二进制值
+        .split('') // 转换数组
+        .reverse() // 反转数组
+        .join('') // 转字符串
+    );
+  }
+}
+```
+
+## 20、杨辉三角
+
+#### 描述
+
+给一整数 n, 返回杨辉三角的前 n 行
+
+- 0 <= n <= 20
+- 杨辉三角也被叫做帕斯卡三角形. --(Wikipedia)
+
+#### 样例
+
+    输入 : n = 4
+    输出 :
+    [
+      [1]
+      [1,1]
+      [1,2,1]
+      [1,3,3,1]
+    ]
+
+#### 题解
+
+```js
+export class Solution {
+  calcYangHuisTriangle(n) {
+    // write your code here
+    let arr = [];
+    for (let i = 0; i < n; i++) {
+      if (arr.length > 1) {
+        // 数组的长度大于1是
+        let nums = [1];
+        // 遍历上层二级数组
+        arr[i - 1].forEach((v, index) => {
+          if (index < arr[i - 1].length - 1) {
+            nums.push(v + arr[i - 1][index + 1]);
+          }
+        });
+        nums.push(1);
+        arr.push(nums);
+      } else {
+        // 长度为0或1时
+        arr.length === 1 ? arr.push([1, 1]) : arr.push([1]);
+      }
+    }
+    return arr;
+  }
+}
+```
+
+## 21、反转数组
+
+#### 描述
+
+原地翻转给出的数组 nums
+
+#### 题解
+
+```js
+export class Solution {
+  reverseArray(nums) {
+    // write your code here
+    return nums.reverse();
+  }
+}
+```
+
+## 22、移动零
+
+#### 描述
+
+给一个数组 nums 写一个函数将 0 移动到数组的最后面，非零元素保持原数组的顺序(必须在原数组操作)
+
+#### 样例
+
+    输入: nums = [0, 1, 0, 3, 12],
+    输出: [1, 3, 12, 0, 0]
+
+#### 题解
+
+```js
+export class Solution {
+  moveZeroes(nums) {
+    // write your code here
+    let len = nums.length;
+    nums = nums
+      .join()
+      .replace(/0/g, '')
+      .split(',')
+      .map((v) => Number(v));
+    nums = nums.concat(new Array(len - nums.length).fill(0));
+    return nums;
+  }
+}
+```
+
+## 23、 数组第二大数
+
+#### 描述
+
+在数组中找到第二大的数。
+
+```js
+export class Solution {
+  secondMax(nums) {
+    // write your code here
+    // 方法很多，来个性能好的
+    // 使用冒泡排序，遍历两次，上浮的倒数第二个数即为第二大数。
+    for (let i = 0; i < 2; i++) {
+      for (let k = 0; k < nums.length - i - 1; k++) {
+        if (nums[k] > nums[k + 1]) {
+          [nums[k], nums[k + 1]] = [nums[k + 1], nums[k]];
+        }
+      }
+    }
+    return nums[nums.length - 2];
   }
 }
 ```

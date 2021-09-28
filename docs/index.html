@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 郜鹏飞
  * @Date: 2021-09-10 16:56:36
- * @LastEditTime: 2021-09-26 17:02:37
+ * @LastEditTime: 2021-09-28 16:38:08
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -34,21 +34,79 @@
 
         // }
         //  简易计算器
-        function calculate(a, operator, b) {
+        // function calculate(a, operator, b) {
+        //     // write your code here
+        //     switch (operator) {
+        //         case '+':
+        //             return a + b;
+        //         case '-':
+        //             return a - b;
+        //         case '*':
+        //             return a * b;
+        //         case '/':
+        //             return a / b;
+        //         default:
+        //             return '运算符错误'
+        //     }
+        // }
+
+        // function rotate(nums, k) {
+        //     // Write your code here
+        //     // 第一种循环
+        //     for(let i = 0; i <nums.length&&i< k; i++){
+        //        nums.unshift(nums.pop()) 
+        //     }
+
+        //     // 第二种
+        //     // return  nums.splice(nums.length - k).concat(nums)
+
+        //     // 第三种
+        //     console.log(nums.splice(nums.length - k).concat(nums));
+        // }
+        // rotate([1,2,3,4,5,6,7],3)
+
+        // 杨辉三角
+        // function calcYangHuisTriangle(n) {
+        //     // write your code here
+        //     let arr = []
+        //     for(let i = 0; i< n;i++){
+        //         if(arr.length>1){
+        //             let nums = [1];
+        //             arr[i - 1].forEach((v,index)=>{
+        //                 if(index < arr[i-1].length-1){
+        //                     nums.push(v+arr[i-1][index+1])
+        //                 }
+        //             })
+        //             nums.push(1)
+        //             arr.push(nums)
+        //         }else{
+
+        //             arr.length === 1? arr.push([1,1]): arr.push([1])
+        //             console.log(arr);
+        //         }
+        //     }
+        //     return arr
+        // }
+        // console.log(calcYangHuisTriangle(5));
+
+        function moveZeroes(nums) {
             // write your code here
-            switch (operator) {
-                case '+':
-                    return a + b;
-                case '-':
-                    return a - b;
-                case '*':
-                    return a * b;
-                case '/':
-                    return a / b;
-                default:
-                    return '运算符错误'
-            }
+            let len = nums.length
+            nums = nums.join().replaceAll('0,', '').split(',').map(v=>(Number(v)));
+            nums = nums.concat(new Array(len - nums.length).fill(0))
+            return nums
+            // let arr = [];
+            // let zero = []
+            // nums.forEach(v=>{
+            //     if(v===0){
+            //         zero.push(v)
+            //     }else{
+            //         arr.push(v)
+            //     }
+            // })
+            // return arr.concat(zero)
         }
+        console.log(moveZeroes([0,0,1,0, 1, 0, 3, 12,0]));
     </script>
 </body>
 
