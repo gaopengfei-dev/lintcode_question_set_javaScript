@@ -2,7 +2,7 @@
  * @Description: 
  * @Author: 郜鹏飞
  * @Date: 2021-09-10 16:56:36
- * @LastEditTime: 2021-09-28 16:38:08
+ * @LastEditTime: 2021-09-30 15:32:39
 -->
 <!DOCTYPE html>
 <html lang="en">
@@ -89,24 +89,165 @@
         // }
         // console.log(calcYangHuisTriangle(5));
 
-        function moveZeroes(nums) {
-            // write your code here
-            let len = nums.length
-            nums = nums.join().replaceAll('0,', '').split(',').map(v=>(Number(v)));
-            nums = nums.concat(new Array(len - nums.length).fill(0))
-            return nums
-            // let arr = [];
-            // let zero = []
-            // nums.forEach(v=>{
-            //     if(v===0){
-            //         zero.push(v)
-            //     }else{
-            //         arr.push(v)
-            //     }
-            // })
-            // return arr.concat(zero)
+        // function moveZeroes(nums) {
+        //     // write your code here
+        //     let len = nums.length
+        //     nums = nums.join().replace(/0,/g, '').split(',').map(v=>(Number(v)));
+        //     nums = nums.concat(new Array(len - nums.length).fill(0))
+        //     return nums
+        //     // let arr = [];
+        //     // let zero = []
+        //     // nums.forEach(v=>{s
+        //     //     if(v===0){
+        //     //         zero.push(v)
+        //     //     }else{
+        //     //         arr.push(v)
+        //     //     }
+        //     // })
+        //     // return arr.concat(zero)
+        // }
+        // console.log(moveZeroes([0,0,1,0, 1, 0, 3, 12,0]));
+        // function calculate(stops, k) {
+        //     // Write your code here
+        //     /* 
+        //     输入：stops=[1,3,6,7,8], k=3
+        //     输出：6
+        //     有一些车辆在停放中。给定一个整数数组stops，代表每辆车停车的位置。给定一个整数k,
+        //     现在你要建造一个移动车棚。需要车棚在这些车辆之间移动时（车棚的最前端不超过最前面的车，车棚的最后端不超过最后面的车），
+        //     移动车棚在任意的位置均能成功覆盖到k辆车。请求出能满足要求的最短车棚的长度。
+        //      */
+        //     if (stops.length === k) return k;
+
+        //     stops = stops.sort((a, b) => a - b);
+        //     let res = 0;
+        //     for (let left = 0, right = k; right < stops.length; left++, right++) {
+        //         res = Math.max(res, stops[right] - stops[left])
+        //     }
+        //     return res
+
+        // }
+        // console.log(calculate([100, 90, 110], 2));
+
+        // let A = [1,2,3];
+        // let B = [];
+        // for(let i = 0;i<A.length;i++){
+        //     let temp = 1;
+        //     for(let k = 0; k < A.length; k++){
+        //         if(k !== i){
+        //             temp *= A[k]
+        //         }
+        //     }
+        //     B.push(temp)
+        // }
+
+        // console.log(B);
+
+        // 主元素   
+        // function majorityNumber(nums) {
+        // 方法一
+        // let obj = nums.reduce((pre,cur) =>{
+        //     if(cur in pre){
+        //         ++pre[cur]
+        //     }else{
+        //         pre[cur] = 1xx
+        //     }
+        //     return pre
+        // },{})
+        // let res = null
+        // for(let k in obj){
+        //     if(obj[k] > parseInt(nums.length / 2 )){
+        //         res = k;
+        //         break
+        //     }
+        // }
+        // return res
+
+        // 方法二
+        //     let marjor = nums[0];
+        //     let count = 1;
+        //     for (let i = 0; i < nums.length; i++) {
+        //         if (count < 1) {
+        //             marjor = nums[i]
+        //         }
+        //         if (marjor === nums[i]) {
+        //             count++
+        //         } else {
+        //             count--
+        //         }
+        //     }
+        //     return marjor
+        // }
+        // let arr = [1, 1, 1, 1, 2, 2, 2]
+
+        // console.log(majorityNumber(arr));
+
+        // function SumofTwoStrings(A, B) {
+        //     // Write your code here
+        //     let len = A.length>B.length?A.length:B.length;
+        //     B = B.padStart(len,'0')
+        //     A = A.padStart(len,'0');
+        //     // let aArr = A.split('');
+        //     // let bArr = B.split('');
+        //     let res = []
+        //     for(let i = 0;i<len;i++){
+        //         res[i] = Number(aArr[i])+Number(bArr[i])
+        //     }
+        //     return res.join('')
+        // }
+        // console.log(SumofTwoStrings('99','111'));
+        // function capitalizesFirst(s) {
+        //     // Write your code here
+        //     return s.replace(/\b\w/g,v => v.toUpperCase())
+        // }
+        // capitalizesFirst("i want to get an accepted")
+
+        // function longestWords(arr) {
+        //     let long = arr[0].length;
+        //     arr.forEach(v=>{
+        //         if(v.length>long){
+        //             long = v.length
+        //         }
+        //     })
+        //     return arr.filter(v => v.length === long)
+        // }
+        // console.log(longestWords(["dog",
+        //     "google",
+        //     "facebook",
+        //     "internationalization",
+        //     "blabla"
+        // ]));
+
+        // function lengthOfLastWord(str) {
+        //     let arr = str.split(' ');
+        //     return arr.length ? arr[arr.length - 1].length : 0
+        // }
+        // console.log(lengthOfLastWord("Hello World"))
+
+        // function largestLetter(s) {
+        //     // Write your code here
+        //     let lowerS = s.toLowerCase();
+        //     let upperS = s.toUpperCase();
+        //     if (s == lowerS || s == upperS) return 'NO';
+        //     s = s.replace(/[a-z]/g, '');
+        //     let res = s[0];
+        //     for (let i = 0; i < s.length; i++) {
+        //         console.log(s[i]);
+        //         if (s[i] > res) {
+        //             res = s[i]
+        //         }
+        //     }
+        //     return res
+        // }
+        // console.log(largestLetter('admeDCAB'));
+
+        function rotateString(str, offset) {
+            let arr = str.split('')
+            for(let i = 0; i < offset;i++){
+                arr.unshift(arr.pop())
+            }
+            return arr.join('')
         }
-        console.log(moveZeroes([0,0,1,0, 1, 0, 3, 12,0]));
+        console.log(rotateString('abcdefg', 20));
     </script>
 </body>
 

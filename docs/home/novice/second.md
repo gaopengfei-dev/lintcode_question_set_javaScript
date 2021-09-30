@@ -2,7 +2,7 @@
  * @Description:
  * @Author: 郜鹏飞
  * @Date: 2021-09-27 17:15:53
- * @LastEditTime: 2021-09-27 17:17:55
+ * @LastEditTime: 2021-09-30 09:16:34
 -->
 
 ## 5、简易计算器
@@ -136,7 +136,7 @@ export class Solution {
 给定年份和月份，返回这个月的天数。
 
     1≤year≤10000
-    1 \leq month \leq 121≤month≤12
+    1≤month≤12
 
 #### 题解
 
@@ -177,7 +177,7 @@ export class Solution {
 
 判断给出的年份 n 是否为闰年. 如果 n 为闰年则返回 true
 
-::: tip
+::: 说明
 闰年是包含额外一天的日历年. 如果年份可以被 4 整除且不能被 100 整除 或者 可以被 400 整除, 那么这一年为闰年
 :::
 

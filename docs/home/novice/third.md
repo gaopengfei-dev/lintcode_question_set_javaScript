@@ -2,7 +2,7 @@
  * @Description:
  * @Author: 郜鹏飞
  * @Date: 2021-09-27 17:18:10
- * @LastEditTime: 2021-09-28 16:52:12
+ * @LastEditTime: 2021-09-30 08:52:11
 -->
 
 ## 11、 生成给定大小的数组
@@ -302,7 +302,7 @@ export class Solution {
     输入：[1, 2, 3, 4, 5]
     输出：5
 
-:::tip
+::: tip 说明
 之前已有类似题目，不编写过多方法
 :::
 
@@ -471,7 +471,7 @@ export class Solution {
     let len = nums.length;
     nums = nums
       .join()
-      .replace(/0/g, '')
+      .replace(/0,/g, '') // 或者使用replaceAll(lintcode编辑器不支持)
       .split(',')
       .map((v) => Number(v));
     nums = nums.concat(new Array(len - nums.length).fill(0));
@@ -480,7 +480,7 @@ export class Solution {
 }
 ```
 
-## 23、 数组第二大数
+## 23、数组第二大数
 
 #### 描述
 
@@ -500,6 +500,238 @@ export class Solution {
       }
     }
     return nums[nums.length - 2];
+  }
+}
+```
+
+## 24、分解质因数
+
+#### 描述
+
+将一个整数分解为若干质因数之乘积。
+
+#### 样例
+
+    输入：10
+    输出：[2, 5]
+
+    输入：660
+    输出：[2, 2, 3, 5, 11]
+
+#### 题解
+
+```js
+export class Solution {
+  primeFactorization(num) {
+    // write your code here
+    let val = 2; // 设置初始值
+    let res = [];
+    if (num < 2) return res;
+    let limit = Math.sqrt(num);
+    while (val <= num) {
+      if (num % val === 0) {
+        num /= val;
+        res.push(val);
+      } else {
+        val += 1;
+      }
+      if (val > limit) {
+        res.push(num);
+        break;
+      }
+    }
+    return res;
+  }
+}
+```
+
+## 25、冰雹猜想
+
+#### 描述
+
+数学家们曾提出一个著名的猜想——冰雹猜想。
+对于任意一个自然数 N，如果 N 是偶数，就把它变成 N / 2；
+如果 N 是奇数，就把它变成 3 \* N+1。
+按照这个法则运算下去，最终必然得 1。
+试问，该数通过几轮变换，会变成 1 呢？
+
+#### 样例
+
+样例 1：
+
+    输入：
+    4
+    输出：
+    2
+    解释：
+    第一轮：4/2=2
+    第二轮：2/2=1
+    答案为 2
+
+#### 题解
+
+```js
+export class Solution {
+  getAnswer(num) {
+    // Write your code here
+    // 方法一 递归
+    if (num > 1) {
+      if (num % 2 === 0) {
+        return 1 + this.getAnswer(parseInt(num / 2));
+      } else {
+        return 1 + this.getAnswer(3 * num + 1);
+      }
+    } else {
+      return 0;
+    }
+
+    // 方法二 while循环
+    let count = 0;
+    while (num !== 1) {
+      num = num % 2 ? num * 3 + 1 : parseInt(num / 2);
+      count++;
+    }
+    return count;
+  }
+}
+```
+
+## 26、翻转字符串
+
+#### 描述
+
+给定一个字符串，逐个翻转字符串中的每个单词。
+
+:::warning 注
+此题没有 js 编译环境
+:::
+
+#### 题解
+
+```js
+function reverseWords(s) {
+  return s
+    .split(' ')
+    .reverse()
+    .join(' ');
+}
+```
+
+## 27、数组剔除元素后的乘积
+
+#### 描述
+
+- 给定一个整数数组 A。
+- 定义 B[i] = A[0] _ ... _ A[i-1] _ A[i+1] _ ... \* A[n-1]B[i]=A[0]∗...∗A[i−1]∗A[i+1]∗...∗A[n−1]， 计算 B 的时候请不- 要使用除法。请输出 B。
+
+#### 样例
+
+    输入：
+    A = [1,2,3]
+    输出：
+    [6,3,2]
+
+#### 题解
+
+```js
+function productExcludeItself(nums) {
+  let B = [];
+  for (let i = 0; i < nums.length; i++) {
+    let temp = nums[i];
+    for (let k = 0; k < nums.length; k++) {
+      if (k !== i) {
+        temp *= nums[k];
+      }
+    }
+    B.push(temp);
+  }
+}
+```
+
+## 28、 主元素
+
+#### 描述
+
+给定一个整型数组，找出主元素，它在数组中的出现次数大于数组元素个数的二分之一。
+
+#### 样例
+
+    输入：
+    数组 = [1, 1, 1, 1, 2, 2, 2]
+    输出：
+    1
+    解释：
+    数组中1的个数大于数组元素的二分之一。
+
+#### 题解
+
+```js
+function majorityNumber(nums) {
+  // 方法一
+  // 先使用reduce返回个对象，数组的个元素作为对象的属性，值为出现的次数
+  let obj = nums.reduce((pre, cur) => {
+    if (cur in pre) {
+      ++pre[cur];
+    } else {
+      pre[cur] = 1;
+    }
+    return pre;
+  }, {});
+  let res = null;
+  // 获取最大次数
+  for (let k in obj) {
+    if (obj[k] > parseInt(nums.length / 2)) {
+      res = k;
+      break;
+    }
+  }
+  return res;
+  // 方法二
+  let marjor = nums[0];
+  let count = 1; // 定义次数
+  for (let i = 0; i < nums.length; i++) {
+    if (count < 1) {
+      marjor = nums[i]; // 次数降到小于1时，重新赋值
+    }
+    if (marjor === nums[i]) {
+      count++; // 增加次数
+    } else {
+      count--;
+    }
+  }
+  return marjor;
+}
+```
+
+## 29、Fizz Buzz 问题
+
+#### 描述
+
+- 给定整数 n ，按照如下规则打印从 1 到 n 的每个数：
+- 如果这个数被 3 整除，打印 fizz。
+- 如果这个数被 5 整除，打印 buzz。
+- 如果这个数能同时被 3 和 5 整除，打印 fizz buzz。
+- 如果这个数既不能被 3 整除也不能被 5 整除，打印数字本身。
+
+#### 题解
+
+```js
+export class Solution {
+  fizzBuzz(n) {
+    // write your code here
+    let arr = [];
+    for (let i = 1; i <= n; i++) {
+      if (i % 5 === 0 && i % 3 === 0) {
+        arr.push('fizz buzz');
+      } else if (i % 3 === 0) {
+        arr.push('fizz');
+      } else if (i % 5 === 0) {
+        arr.push('buzz');
+      } else {
+        arr.push(String(i));
+      }
+    }
+    return arr;
   }
 }
 ```
