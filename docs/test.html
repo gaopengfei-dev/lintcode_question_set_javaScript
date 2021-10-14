@@ -1,0 +1,188 @@
+<!--
+ * @Description: 
+ * @Author: 郜鹏飞
+ * @Date: 2021-10-13 16:14:20
+ * @LastEditTime: 2021-10-14 14:56:21
+-->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <div id="root">
+        <span>
+            <a href=""></a>
+            <i> </i>
+        </span>
+        <div id="aa">
+            <span id="spanId">
+                <i></i>
+            </span>
+            <div>
+                <span>
+                    <p id="textId">
+
+                    </p>
+                </span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let dom = document.documentElement
+
+        /* 
+            寻找两个节点共同的父节点
+        */
+        function findParent(node, node1) {
+            // if(node.contains(node1)){
+            //     return node
+            // }else{
+            //     return findParent(node.parentNode,node1)
+            // }
+
+            // 方法二
+            while (1) {
+                if (node.contains(node1)) {
+                    return node
+                } else {
+                    node = node.parentNode
+                }
+            }
+        }
+        let spanDom = document.getElementById('spanId')
+        let textDom = document.getElementById('textId')
+        console.log(findParent(spanDom, textDom));
+        // 遍历dom树 深度优先 递归
+        function deepDomTree(node, nodeList) {
+            if (node) {
+                debugger
+                nodeList.push(node.localName);
+                let children = node.children
+                for (let i = 0; i < children.length; i++) {
+                    deepDomTree(children[i], nodeList)
+                }
+                return nodeList
+            }
+
+        }
+        // 深度优先非递归
+        function deepFirstSearch(node) {
+            let nodes = [];
+            if (node) {
+                let stack = [node];
+                while (stack.length) {
+                    let item = stack.pop();
+                    nodes.push(item)
+                    let childs = item.children;
+                    for (let i = childs.length - 1; i >= 0; i--) {
+                        stack.push(childs[i])
+                    }
+                }
+            }
+            return nodes
+        }
+        console.dir(dom)
+        console.log(deepFirstSearch(dom))
+
+        // 广度优先遍历dom树
+        function breadthFindDomTree(node) {
+            if (!node) return []
+            let queue = [node];
+            let res = [];
+            while (queue.length) {
+                let item = queue.shift();
+                res.push(item.localName);
+                for (let i = 0; i < item.children.length; i++) {
+                    queue.push(item.children[i])
+                }
+            }
+            return res
+        }
+
+        function breadthFirstSearch(node) {
+            var nodes = [];
+            var i = 0;
+            debugger;
+            if (!(node == null)) {
+                nodes.push(node);
+                breadthFirstSearch(node.nextElementSibling);
+                breadthFirstSearch(node.firstElementChild);
+            }
+            return nodes;
+        }
+        console.log(breadthFirstSearch(dom));
+        // console.log(deepDomTree(dom,[]))
+        // console.log(breadthFindDomTree(dom,[]))
+        // 深度优先
+        // function deepFindSearch(node,nodeLsit){
+        //     if(node){
+        //         nodeLsit.push(node);
+        //         let children = node.children
+        //         for(let i = 0; i < children.length; i++){
+        //             deepFindSearch(children[i],nodeLsit)
+        //         }
+        //     }
+        //     return nodeLsit
+        // }
+
+        // // 广度优先
+        // function breadthFindSearch(node){
+        //     let queue = [node];
+        //     let res = []
+        //     while(queue.length > 0){
+        //         let item = queue.shift()
+        //         res.push(item);
+        //         for(let i = 0; i < item.children.length;i++){
+        //             queue.push(item.children[i])
+        //         }
+        //     }  
+        //     return res
+        // }
+
+        // let node = document.getElementById('root')
+        // console.log(deepFindSearch(node,[]));
+        // console.log(breadthFindSearch(node));
+
+        /* 
+        /**
+ * Definition for a binary tree node.
+ * function TreeNode(val) {
+ *     this.val = val;
+ *     this.left = this.right = null;
+ * }
+ */
+        /**
+         * @param {TreeNode} root
+         * @return {number[][]}
+         */
+        // var levelOrder = function(root) {
+        //     if(!root) return []
+        //     let res =[]
+        //     let queue = [root];
+        //     let level = 0;
+        //     while(queue.length){
+        //         res[level] = []
+        //         let levelNum = queue.length;
+        //         while(levelNum--){
+        //             const item = queue.shift()
+        //             res[level].push(item.val)
+        //             item.left && queue.push(item.left)
+        //             item.right && queue.push(item.right)
+        //         }
+        //       level++
+        //     }
+        //     return res
+        // };
+    </script>
+</body>
+
+</html>

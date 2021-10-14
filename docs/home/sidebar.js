@@ -3,7 +3,7 @@
  * @Author: 武明琴
  * @Date: 2021-01-14 16:40:51
  * @EditAuthor: jiangze
- * @LastEditTime: 2021-09-30 10:57:51
+ * @LastEditTime: 2021-10-14 10:30:06
  */
 module.exports = [
   {
@@ -37,6 +37,49 @@ module.exports = [
       {
         title: '第四阶段(字符串与循环)',
         path: '/home/novice/fourth'
+      },
+      {
+        title: '第五阶段(栈与队列)',
+        path: '/home/novice/fifth'
+      },
+      {
+        title: '第六阶段(简单递归)',
+        path: '/home/novice/sixth'
+      }
+    ]
+  },
+  {
+    title: '常见数据结构题',
+    collapsable: true,
+    sidebarDepth: 3,
+    children: [
+      {
+        title: '链表',
+        path: '/home/data/list'
+      },
+      {
+        title: '常规题',
+        path: '/home/data/routine'
+      },
+      {
+        title: '字符串',
+        path: '/home/data/string'
+      },
+      {
+        title: '数组',
+        path: '/home/data/array'
+      },
+      {
+        title: '动态规划',
+        path: '/home/data/dynamic'
+      },
+      {
+        title: '排序',
+        path: '/home/data/sort'
+      },
+      {
+        title: '查询',
+        path: '/home/data/search'
       }
     ]
   }
